@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/zmiles17/todo-with-socket.io/issues"
   },
-  "homepage": "https://github.com/zmiles17/todo-with-socket.io#readme"
+  "homepage": "https://github.com/zmiles17/todo-with-socket.io#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.11",
+    "nodemon": "^1.18.6",
+    "socket.io": "^2.1.1"
+  }
 }
