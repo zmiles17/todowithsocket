@@ -20,7 +20,7 @@ module.exports = function(app){
         })
     })
     app.put("/checklist/:id", function(req, res){
-        db.findByIdAndUpdate({ _id: req.params.id }, { $set:{ completed: true } })
+        db.findOneAndUpdate({ _id: req.params.id }, { $set:{ completed: true } })
         .then(function(data){
             res.json(data);
         })
