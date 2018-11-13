@@ -1,9 +1,8 @@
 
 function renderChecklist() {
-    const circle = `<i class="fal fa-circle"></i>`;
     $.get("/checklist").then(function (res) {
         $("ul").empty();
-        res.forEach(e => $("ul").append(`<li data-id="${e._id}">${e.todo}${circle}</li>`));
+        res.forEach(e => $("ul").append(`<li data-id="${e._id}">${e.todo}<i icon-id="${e._id}" class="fal fa-circle"></i></li>`));
         $(".fa-circle").on("click", function () {
             const id = $(event.target).parent().attr("data-id");
             $.ajax({ url: `/checklist/${id}`, method: "PUT", data: { completed: true } }).then(function (res) {
