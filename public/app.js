@@ -3,7 +3,13 @@ function renderChecklist() {
     const circle = `<i class="fal fa-circle"></i>`;
     $.get("/checklist").then(function (res) {
         $("ul").empty();
-        res.forEach(e => $("ul").append(`<li>${e.todo}${circle}</li>`).attr("data-id", e._id));
+        res.forEach(e => $("ul").append(`<li data-id="${e._id}">${e.todo}${circle}</li>`));
+        $(".fa-circle").on("click", function(){
+            const id = $(event.target).parent().attr("data-id");
+            $.ajax({url:`/checklist/${id}`, method: "PUT", data: { completed: true}}).then(function(res){
+                console.log(res);
+            })
+        })
     })
 }
 

@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(express.static("public"));
 
+mongoose.Promise = Promise;  
 mongoose.connect("mongodb://localhost/checklist", { useNewUrlParser: true });
 
 // require("./sockets/checklist-sockets")(io);

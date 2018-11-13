@@ -19,4 +19,13 @@ module.exports = function(app){
             res.json(err);
         })
     })
+    app.put("/checklist/:id", function(req, res){
+        db.findByIdAndUpdate({ _id: req.params.id }, { $set:{ completed: true } })
+        .then(function(data){
+            res.json(data);
+        })
+        .catch(function(err){
+            res.json(err);
+        })
+    })
 }
