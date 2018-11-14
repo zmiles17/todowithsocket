@@ -6,6 +6,7 @@ html {
 
 body {
     margin: 30px;
+    font-size: 25px;
 }
 h1 {
     display: inline-block;
@@ -32,6 +33,20 @@ input {
 
 .fa-times-circle {
     color: darkturquoise;
+}
+
+span {
+    letter-spacing: 7px;
+}
+
+li {
+    padding-top: 50px;
+}
+
+i {
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
 }
 
 
