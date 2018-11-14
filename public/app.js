@@ -13,6 +13,7 @@ function renderChecklist() {
                 const id = $(event.target).parent().attr("data-id");
                 $.ajax({ url: `/checklist/${id}`, method: "PUT", data: { completed: true } }).then(function (res) {
                     $(event.target).removeClass("far fa-circle").addClass("far fa-times-circle");
+                    $(".fa-times-circle").on("click", deleteItem);
                 })
             }
         })
