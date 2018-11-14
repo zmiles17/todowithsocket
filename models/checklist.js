@@ -6,7 +6,7 @@ const checkListModel = new Schema({
     todo: {
         type: String,
         unique: true,
-        // required: [true, "Enter a valid list item"]
+        required: [true, "Enter a valid list item"]
     },
     completed: {
         type: Boolean,

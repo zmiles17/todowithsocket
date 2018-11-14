@@ -1,3 +1,4 @@
+const socket = io();
 const date = new Date();
 const day = ["SUN", "MON", "TUES", "WED", "THURS", "FRI", "SAT"];
 const month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
@@ -34,8 +35,12 @@ $("form").on("submit", function (event) {
     const input = $("input").val().trim();
     $("input").val("");
     $.post("/checklist", { todo: input }).then(function (res) {
-        renderChecklist();
+        socket.emit("new-message", { todo: input })
     })
+})
+
+socket.on("emit-message", function (data) {
+    renderChecklist();
 })
 
 renderChecklist();
