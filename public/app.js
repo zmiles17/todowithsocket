@@ -1,7 +1,7 @@
 const date = new Date();
 const day = ["SUN", "MON", "TUES", "WED", "THURS", "FRI", "SAT"];
 const month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-$("header").append(`<h1>${day[date.getDay()]}</h1><h4>${month[date.getMonth()]}${date.getDate()}</h4><h4>${date.getFullYear()}</h4>`);
+$("header").append(`<h1>${day[date.getDay()]}</h1><h4>${month[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}</h4>`);
 
 function renderChecklist() {
     $.get("/checklist").then(function (res) {
@@ -10,6 +10,7 @@ function renderChecklist() {
         $(".fa-times-circle").on("click", deleteItem);
         $("li").on("click", function (event) {
             if ($(event.target).attr("class") === "far fa-circle") {
+                $(event.target).parent().css("color", "lightsteelblue");
                 const id = $(event.target).parent().attr("data-id");
                 $.ajax({ url: `/checklist/${id}`, method: "PUT", data: { completed: true } }).then(function (res) {
                     $(event.target).removeClass("far fa-circle").addClass("far fa-times-circle");
