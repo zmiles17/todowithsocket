@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 mongoose.Promise = Promise;  
-mongoose.connect("mongodb://localhost/checklist", { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/checklist', { useNewUrlParser: true });
 
 require("./sockets/checklist-sockets")(io);
 require("./routes/api-routes")(app);
