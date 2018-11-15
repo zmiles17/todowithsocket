@@ -1,6 +1,3 @@
-const users = {}
-
-
 module.exports = function (io) {
     io.on("connection", function (socket) {
         socket.on("new-message", function (data) {
@@ -12,7 +9,6 @@ module.exports = function (io) {
         })
 
         socket.on("delete-list", function(data){
-            console.log(data);
             io.emit("emit-deleted", data)
         })
     })
