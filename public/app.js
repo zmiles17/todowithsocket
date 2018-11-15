@@ -14,6 +14,7 @@ function renderChecklist() {
             if ($(event.target).attr("class") === "far fa-circle") {
                 const id = $(event.target).parent().attr("data-id");
                 $.ajax({ url: `/checklist/${id}`, method: "PUT", data: { completed: true } }).then(function (res) {
+                    socket.emit("checked-list", {completed: true})
                     $(event.target).removeClass("far fa-circle").addClass("far fa-times-circle");
                     $(".fa-times-circle").parent().css("color", "lightsteelblue");
                     $(".fa-times-circle").on("click", deleteItem);
@@ -26,6 +27,7 @@ function renderChecklist() {
 function deleteItem (event) {
     const id = $(event.target).parent().attr("data-id");
     $.ajax({ url: `/checklist/${id}`, method: "DELETE"}).then(function(res){
+        socket.emit("delete-list", { _id: id})
         $(event.target).parent().remove();
     })
 }
@@ -40,6 +42,14 @@ $("form").on("submit", function (event) {
 })
 
 socket.on("emit-message", function (data) {
+    renderChecklist();
+})
+
+socket.on("emit-checked", function(data){
+    renderChecklist();
+})
+
+socket.on("emit-deleted", function(data){
     renderChecklist();
 })
 
