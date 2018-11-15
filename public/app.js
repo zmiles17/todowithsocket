@@ -1,6 +1,6 @@
 const socket = io();
 const date = new Date();
-const day = ["SUN", "MON", "TUES", "WED", "THURS", "FRI", "SAT"];
+const day = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 const month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 $("header").append(`<h1>${day[date.getDay()]}</h1><h4>${month[date.getMonth()]} ${date.getDate()} <span>${date.getFullYear()}</span></h4>`);
 
