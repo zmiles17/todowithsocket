@@ -4,10 +4,11 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
+const path = require("path");
 const PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: true}));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
  
