@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
  
-mongoose.connect('mongodb://localhost/check-list', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/checklist', { useNewUrlParser: true });
 
 require("./sockets/checklist-sockets")(io);
 require("./routes/api-routes")(app);
