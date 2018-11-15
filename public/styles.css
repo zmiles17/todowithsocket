@@ -53,6 +53,8 @@ span {
 li {
     padding-top: 50px;
     padding-bottom: 20px;
+    width: auto;
+    word-wrap: break-word;
 }
 
 i {
